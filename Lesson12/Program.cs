@@ -76,7 +76,7 @@ namespace Lesson12
         {
 
         }
-        public override float Area => A * B;
+        public override float Area => 0.5f * A * B;
 
     }
 
@@ -155,11 +155,9 @@ namespace Lesson12
                     a = float.Parse(Console.ReadLine());
                     Console.Write("Enter right triangle side B: ");
                     b = float.Parse(Console.ReadLine());
-                    Console.Write("Enter right triangle side C: ");
-                    c = float.Parse(Console.ReadLine());
-                    Console.Write("Enter right triangle height: ");
-                    h = float.Parse(Console.ReadLine());
-                    return new RightTriangle(a, b, c, h);
+                    
+                    c = (float)Math.Sqrt(a*a + b*b);
+                    return new RightTriangle(a, b, c, 0);
                 case 5:
                     Console.Write("Enter equilateral triangle side: ");
                     a = float.Parse(Console.ReadLine());
