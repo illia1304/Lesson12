@@ -71,23 +71,29 @@ namespace Lesson12
 
     public class RightTriangle : Triangle
     {
-        public RightTriangle(float a, float b, float c, float h) :
-            base(a, h, b, c)
+        public RightTriangle(float a, float b) :
+            base(a,b, 0, 0 )
         {
 
         }
         public override float Area => 0.5f * A * B;
+        public override float Perimeter => A+B+(float)Math.Sqrt(A*A+B*B);
 
     }
 
     public class EquilTriangle : Triangle
     {
-        public EquilTriangle(float a, float b, float c, float h)
-            : base(a, b, c, h)
+        private float a;
+
+     
+
+        public EquilTriangle(float a)
+            : base(a, 0, 0, 0)
         {
 
         }
-        public override float Area => A * H;
+        public override float Area => A * (float)((A*Math.Sqrt(3))/2);
+        public override float Perimeter => A+A+A;
 
     }
 
@@ -157,13 +163,11 @@ namespace Lesson12
                     b = float.Parse(Console.ReadLine());
                     
                     c = (float)Math.Sqrt(a*a + b*b);
-                    return new RightTriangle(a, b, c, 0);
+                    return new RightTriangle(a, b);
                 case 5:
                     Console.Write("Enter equilateral triangle side: ");
                     a = float.Parse(Console.ReadLine());
-                    Console.Write("Enter right triangle height: ");
-                    h = float.Parse(Console.ReadLine());
-                    return new EquilTriangle(a, a, a, h);
+                    return new EquilTriangle(a);
 
                 default:
                     Console.Write("Incorrect shape type. Choose again: ");
