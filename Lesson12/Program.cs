@@ -51,11 +51,10 @@ namespace Lesson12
     }
     public class Triangle : Shape
     {
-        public Triangle(float a, float b, float c, float h)
+        public Triangle(float a, float b, float c)
             : base(nameof(Triangle))
         {
             A = a;
-            H = h;
             B = b;
             C = c;
         }
@@ -63,7 +62,6 @@ namespace Lesson12
         public float A { get; }
         public float B { get; }
         public float C { get; }
-        public float H { get; }
 
         public override float Area => 0;
         public override float Perimeter => A + B + C;
@@ -72,7 +70,7 @@ namespace Lesson12
     public class RightTriangle : Triangle
     {
         public RightTriangle(float a, float b) :
-            base(a,b, 0, 0 )
+            base(a, b, (float)Math.Sqrt(a * a + b * b))
         {
 
         }
@@ -88,7 +86,7 @@ namespace Lesson12
      
 
         public EquilTriangle(float a)
-            : base(a, 0, 0, 0)
+            : base(a, a, a)
         {
 
         }
@@ -151,9 +149,7 @@ namespace Lesson12
                     float b = float.Parse(Console.ReadLine());
                     Console.Write("Enter triangle side C: ");
                     float c = float.Parse(Console.ReadLine());
-                    Console.Write("Enter triangle triangle height: ");
-                    float h = float.Parse(Console.ReadLine());
-                    return new Triangle(a, b, c, h);
+                    return new Triangle(a, b, c);
 
                 case 4:
 
